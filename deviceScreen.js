@@ -39,14 +39,23 @@ function deviceScreen(){
       
       rectMode(CENTER);
       strokeWeight(3);
-      stroke(125);
+      if (counter < 2){
+        stroke(125);
+      }else{
+        stroke('red');
+      }
+      
       noFill();
       rect(j*68+36,i*60+62,30,30);
       noStroke();
       rectMode(CORNER);
       
-      fill(125);
-      text(counter,j*68+36,i*60+68);
+      if (counter < 2){
+        fill(125);
+      }else{
+        fill('red');
+      }
+      text(counter,j*68+35,i*60+68);
       
       counter = counter + 1;
     }
