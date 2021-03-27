@@ -11,6 +11,11 @@ function threeWSelect(){
         grid[i][j] = 50;  //fills the grid clicked
 
         grid[0][4] = thwr[i][j]; //assign tag based on grid clicked
+          
+          if (x > 0 && x <120 && y > 32 && y < 152){
+            tapTrack3 = tapTrack3 + 1;
+            grid[1][4] = tapTrack3;
+          }
             }
     }
   }

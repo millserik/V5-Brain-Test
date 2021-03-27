@@ -7,21 +7,27 @@ function port1Screen(){
   textAlign(LEFT);
   text('Port 1',10,23);
   
+      let sensorIcon = [threeWire, bumper, potent];  //options to cycle through
+    let sensorLabel = ['No Sensor', 'Bumper Switch','Potentiometer'];
+    tapTrackP1 = grid[0][5]; //counter to track how many times icon is clicked
+
+  
     let icons = [];
   icons = [
-    [threeWire, slotb, slotb, slotb],
+    [sensorIcon[(tapTrackP1 % sensorIcon.length)], slotb, slotb, slotb],
     [slotb, slotb, slotb, backB]
   ];
   
   let labels = [];
     labels = [
-    ['No Sensor',' ',' ',' '],
+    [sensorLabel[(tapTrackP1 % sensorLabel.length)],' ',' ',' '],
     [' ',' ',' ','Back']
   ];
   
   textAlign(CENTER);
   textSize(14);
   imageMode(CENTER);
+  grid[0][0] = 25;
   
   for (let i = 0; i < 2; i++){
     for (let j = 0; j < 4; j++){

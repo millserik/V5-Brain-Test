@@ -17,6 +17,7 @@ function deviceScreen(){
   textAlign(CENTER);
   textSize(16);
   imageMode(CENTER);
+
   
   for (let i = 0; i < 1; i++){
     
@@ -42,7 +43,7 @@ function deviceScreen(){
       if (counter < 2){
         stroke(125);
       }else{
-        stroke('red');
+        stroke(255,0,0,50); //red with transparency
       }
       
       noFill();
@@ -53,7 +54,7 @@ function deviceScreen(){
       if (counter < 2){
         fill(125);
       }else{
-        fill('red');
+        fill(255,0,0,50);
       }
       text(counter,j*68+35,i*60+68);
       

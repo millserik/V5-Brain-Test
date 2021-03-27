@@ -11,12 +11,14 @@ function preload(){
   ctrlDim = loadImage('gridIcons/ctrlDim.png');
   battery = loadImage('gridIcons/battery.png');
   threeWire = loadImage('gridIcons/threeWire.png');
+  bumper = loadImage('gridIcons/bumpSwitch.png');
+  potent = loadImage('gridIcons/potentiometer.png');
 }
 // 2x4 grid background and tag pass[0][4]
   let grid = [];
   grid = [
-    [0,0,0,0,'home'],
-    [0,0,0,0,0]
+    [0,0,0,0,'home',0],
+    [0,0,0,0,0,0]
   ];
   let tag = grid[0][4];
 
@@ -62,11 +64,15 @@ let pt1 = [
   ['port1','port1','port1',d]
 ];
 
+let tapTrackP1 = 0; //counter to track how many times port1 icon is clicked
+
 //threeWire tags
 let thwr = [
   ['threeW','threeW','threeW','threeW'],
   ['threeW','threeW','threeW',d]
 ];
+
+let tapTrack3 = 0; //counter to track how many times 3-wire icon is clicked
 
 function setup() {
   createCanvas(480, 272);
@@ -129,9 +135,11 @@ function mouseReleased(){
   } else {
   
   tag = grid[0][4];
+  tapTrack3 = grid[1][4];
+  tapTrackP1 = grid[0][5];
   grid = [
-    [0,0,0,0,tag],
-    [0,0,0,0,0]
+    [0,0,0,0,tag,tapTrackP1],
+    [0,0,0,0,tapTrack3,0]
   ];
   }
 }

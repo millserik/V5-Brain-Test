@@ -11,6 +11,11 @@ function port1Select(){
         grid[i][j] = 50;
 
         grid[0][4] = pt1[i][j];
+          
+          if (x > 0 && x <120 && y > 32 && y < 152){
+            tapTrackP1 = tapTrackP1 + 1;
+            grid[0][5] = tapTrackP1;
+          }
             }
     }
   }
