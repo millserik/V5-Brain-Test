@@ -70,7 +70,7 @@ let tapTrackP1 = 0; //counter to track how many times port1 icon is clicked
 
 //threeWire
 let tapTrack3 = 0; //counter to track how many times 3-wire icon is clicked
-let sens3Summary = [' ',1]; //track active 3 wire sensor and state
+let sens3Summary = [' ',1,0]; //track active 3 wire sensor, interactive state, analog signal
 
 function setup() {
   createCanvas(480, 272);
@@ -94,10 +94,14 @@ function draw() {
   }
   if (tag == 'threeW'){
     threeWScreen();
+    grid[0][6] = sens3Summary[0];
   }
+  //console.log(sens3Summary);
 }
 
 function mousePressed(){
+  console.log('click');
+  
   if (tag == 'home'){
     homeSelect(); 
   }
@@ -115,6 +119,7 @@ function mousePressed(){
   }
   if (tag == 'threeW'){
     threeWSelect(sens3Summary);
+    console.log(sens3Summary);
   }
 }
 
@@ -135,15 +140,25 @@ function mouseReleased(){
   tag = grid[0][4];
   tapTrack3 = grid[1][4];
   tapTrackP1 = grid[0][5];
-  sens3Summary = [grid[0][6], grid[1][6]];
+  sens3Summary = [grid[0][6], grid[1][6], grid[1][5]];
   if (sens3Summary[1] == 0){
     sens3Summary[1] = 1;
   }
   grid = [
     [0,0,0,0,tag,tapTrackP1,0],
-    [0,0,0,0,tapTrack3,0,0]
+    [0,0,0,0,tapTrack3,sens3Summary[2],1]
   ];
   }
+
+  
 }
 
+function mouseDragged(){
+    console.log('mouse dragged');
+    if (grid[0][6] == 'Potentiometer' && grid[1][6] == 0){
+      getMouseAngle();
+      sens3Summary = [grid[0][6], grid[1][6], grid[1][5]];
+    }
+    // return false
+}
 

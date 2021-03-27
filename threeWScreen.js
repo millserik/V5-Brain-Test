@@ -50,6 +50,8 @@ function threeWScreen(){
   textSize(16);
   fill(255);
   text(sensorType[(tapTrack3 % sensorLabel.length)],180,55);
+  
+  //add display elements specific to sensor
  
   if (sens == 'Bumper Switch'){
     text(digital[sens3Summary[1]],240,78); 
@@ -76,6 +78,55 @@ function threeWScreen(){
     strokeWeight(1);
     stroke(255,50);
     rect(120,92,240,180);
+    noStroke();
+    
+  }
+  
+  if (sens == 'Potentiometer'){
+        let angle1 = sens3Summary[2];
+        while(angle1 < 145){
+          angle1 = angle1 + 360;
+        }
+        text('Angle:',140,115);
+        text((angle1-145) + ' Degrees',200,115);
+    let analog = floor(map((angle1-145),0,250,0,4095));
+    let analogPercent = floor(map((angle1-145),0,250,0,100));
+        text(analog + '  (' + analogPercent +'%)',240,78);
+    
+  //box around dial
+    rectMode(CORNER);
+    noFill();
+    strokeWeight(1);
+    stroke(255,50);
+    rect(120,92,240,180);
+    noStroke();
+    
+    push();
+    rectMode(CENTER);
+    fill(125);
+    stroke(255);
+    translate(240,212);
+    rotate(angle1);
+    rect(0,0,50,50);
+    pop();
+    
+    //create dial arc
+    angleMode(DEGREES);
+    noFill();
+    stroke(255);
+    strokeWeight(3);
+    arc(240,212,100,100,145,35);
+    noStroke();
+    
+    //movable dial
+    stroke(255);
+    //fill(0,176,240);
+    if (sens3Summary[1] == 0){
+      fill(0,176,240,120);
+    } else {
+      fill(0,176,240);
+    }
+    ellipse(240+50*cos(angle1),212+50*sin(angle1),20);
     noStroke();
     
   }
