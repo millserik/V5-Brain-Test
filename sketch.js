@@ -19,8 +19,8 @@ function preload(){
 // 2x4 grid background and tag pass[0][4]
   let grid = [];
   grid = [
-    [0,0,0,0,'home',0],
-    [0,0,0,0,0,0]
+    [0,0,0,0,'home',0,0],
+    [0,0,0,0,0,0,0]
   ];
   let tag = grid[0][4];
 
@@ -70,6 +70,7 @@ let tapTrackP1 = 0; //counter to track how many times port1 icon is clicked
 
 //threeWire
 let tapTrack3 = 0; //counter to track how many times 3-wire icon is clicked
+let sens3Summary = [' ',1]; //track active 3 wire sensor and state
 
 function setup() {
   createCanvas(480, 272);
@@ -113,7 +114,7 @@ function mousePressed(){
     port1Select();
   }
   if (tag == 'threeW'){
-    threeWSelect();
+    threeWSelect(sens3Summary);
   }
 }
 
@@ -134,9 +135,13 @@ function mouseReleased(){
   tag = grid[0][4];
   tapTrack3 = grid[1][4];
   tapTrackP1 = grid[0][5];
+  sens3Summary = [grid[0][6], grid[1][6]];
+  if (sens3Summary[1] == 0){
+    sens3Summary[1] = 1;
+  }
   grid = [
-    [0,0,0,0,tag,tapTrackP1],
-    [0,0,0,0,tapTrack3,0]
+    [0,0,0,0,tag,tapTrackP1,0],
+    [0,0,0,0,tapTrack3,0,0]
   ];
   }
 }

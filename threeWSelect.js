@@ -9,20 +9,18 @@ function threeWSelect(){
   }
   
   //check if back button was clicked
-  if (x > 360 && x < 480 && y > 152 && y < 272){
+  if (x > 420 && x < 480 && y > 212 && y < 272){
     grid[0][4] = d;
+    grid[1][3] = 50;
   }else{
     grid[0][4] = 'threeW';
   }
+  
 
-  // highlight clicked grid
-  for (let i = 0; i < 2; i++){
-    for (let j = 0; j < 4; j++){
-        if (x > j*120 && x < (j+1)*120 && y > (i*120 + 32) && y < (i+1)*120 +32){
-          
-        grid[i][j] = 50;  //fills the grid clicked
-          
-        }
+// actions for bumper switch screen
+  if (sens3Summary[0] == 'Bumper Switch'){
+    if (x > 195 && x < 285 && y > 137 && y < 227){
+      sens3Summary[1] = 0;
     }
   }
   
