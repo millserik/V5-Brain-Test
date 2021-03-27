@@ -7,8 +7,8 @@ function port1Screen(){
   textAlign(LEFT);
   text('Port 1',10,23);
   
-      let sensorIcon = [threeWire, bumper, potent];  //options to cycle through
-    let sensorLabel = ['No Sensor', 'Bumper Switch','Potentiometer'];
+      let sensorIcon = [smartPt, smartPt, smartPt];  //options to cycle through
+    let sensorLabel = ['No Sensor', 'Sensor 1','Sensor 2'];
     tapTrackP1 = grid[0][5]; //counter to track how many times icon is clicked
 
   

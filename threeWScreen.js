@@ -7,8 +7,9 @@ function threeWScreen(){
   textAlign(LEFT);
   text('3-Wire Ports',10,23);
   
-    let sensorIcon = [threeWire, bumper, potent];  //options to cycle through
-    let sensorLabel = ['No Sensor', 'Bumper Switch','Potentiometer'];
+    let sensorIcon = [threeWire, bumper, potent,linetr];  //options to cycle through
+    let sensorLabel = ['No Sensor', 'Bumper Switch','Potentiometer','Line Tracker'];
+    let sensorType = [' ', 'Digital Input','Analog Input','Analog Input'];
     tapTrack3 = grid[1][4]; //counter to track how many times icon is clicked
   
     let icons = [];
@@ -19,7 +20,7 @@ function threeWScreen(){
   
   let labels = [];
     labels = [
-    [sensorLabel[(tapTrack3 % sensorLabel.length)],' ',' ',' '],
+    [sensorLabel[(tapTrack3 % sensorLabel.length)],sensorType[(tapTrack3 % sensorType.length)],' ',' '],
     [' ',' ',' ','Back']
   ];
   

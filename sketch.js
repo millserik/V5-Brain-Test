@@ -13,6 +13,8 @@ function preload(){
   threeWire = loadImage('gridIcons/threeWire.png');
   bumper = loadImage('gridIcons/bumpSwitch.png');
   potent = loadImage('gridIcons/potentiometer.png');
+  linetr = loadImage('gridIcons/lineTracker.png');
+  smartPt = loadImage('gridIcons/smartPort.png');
 }
 // 2x4 grid background and tag pass[0][4]
   let grid = [];
@@ -66,12 +68,7 @@ let pt1 = [
 
 let tapTrackP1 = 0; //counter to track how many times port1 icon is clicked
 
-//threeWire tags
-let thwr = [
-  ['threeW','threeW','threeW','threeW'],
-  ['threeW','threeW','threeW',d]
-];
-
+//threeWire
 let tapTrack3 = 0; //counter to track how many times 3-wire icon is clicked
 
 function setup() {
