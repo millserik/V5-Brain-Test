@@ -9,9 +9,13 @@ function threeWSelect(){
     tapTrack3 = tapTrack3 + 1;
     grid[1][4] = tapTrack3;
     
-    if (tapTrack3 % 4 == 2){ //should definitely change this
+    if (tapTrack3 % 4 == 2){ //initial value for potentiometer
       grid[1][5] = 145;
     }
+    if (tapTrack3 % 4 == 3){ //initial value for potentiometer
+      grid[1][5] = 150;
+    }
+    
   }
   
   //check if back button was clicked
@@ -34,11 +38,16 @@ function threeWSelect(){
   angle = grid[1][5];
   if (sens3Summary[0] == 'Potentiometer'){
     if (dist(x,y,(240+50*cos(angle)),(212+50*sin(angle))) < 10){
-      
       sens3Summary[1] = 0;
-      
     }
   }
+  
+//actions for line tracker screen
+    if (sens3Summary[0] == 'Line Tracker'){
+      if (abs(mouseY-160) < 10 && abs(mouseX - grid[1][5]) < 10){
+        sens3Summary[1] = 0;
+      }
+    }
   
   grid[1][6] = sens3Summary[1];
   

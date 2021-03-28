@@ -33,7 +33,7 @@ function getMouseAngle(){
   }
   
   grid[1][5] = angleM;
-  console.log('gMA ran');
+
   
   return grid;
   

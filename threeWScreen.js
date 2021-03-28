@@ -101,13 +101,15 @@ function threeWScreen(){
     rect(120,92,240,180);
     noStroke();
     
+    //create axle model
     push();
     rectMode(CENTER);
     fill(125);
     stroke(255);
+    strokeWeight(3);
     translate(240,212);
     rotate(angle1);
-    rect(0,0,50,50);
+    rect(0,0,50,50,10);
     pop();
     
     //create dial arc
@@ -131,8 +133,78 @@ function threeWScreen(){
     
   }
   
+  if (sens == 'Line Tracker'){
+    
+    let currentX = sens3Summary[2];
+    text('Brightness:',140,115);
+    text(floor(map(currentX,150,330,100,0)) + '%',225,115);
+    let analogLT = floor(map(currentX,150,330,0,4095));
+    let analogPercentLT = floor(map(currentX,150,330,0,100));
+        text(analogLT + '  (' + analogPercentLT +'%)',240,78);
+    
+      //box around slider
+    rectMode(CORNER);
+    noFill();
+    strokeWeight(1);
+    stroke(255,50);
+    rect(120,92,240,180);
+    noStroke();
+    
+    //gradient box
+    let b1, b2;
+    b1 = color(255);
+    b2 = color(0);
+    
+    push();
+    setGradient(150, 182, 180, 60, b1, b2);
+    pop();
+    
+    push();
+    //outline gradient
+    stroke(255);
+    strokeWeight(3);
+    noFill();
+    rect(150,182,180,60);
+    line(150,160,150+180,160);
+    pop();
+    
+    //create slider
+    push();
+    stroke(255);
+    strokeWeight(3);
+    rectMode(CENTER);
+    
+    if (sens3Summary[1] == 0){
+     fill(0,176,240,120) 
+    } else{
+      fill(0,176,240)
+    }
+    
+    rect(currentX,160,20,20);
+    noStroke();
+    pop();
+    //0,176,240
+    
+    
+    
+  }
+  
   sens3Summary[0] = sens;
   
   return sens3Summary;
 
+}
+
+function setGradient(x, y, w, h, c1, c2, axis) {
+  noFill();
+
+
+    // Left to right gradient
+    for (let i = x; i <= x + w; i++) {
+      let inter = map(i, x, x + w, 0, 1);
+      let c = lerpColor(c1, c2, inter);
+      stroke(c);
+      line(i, y, i, y + h);
+    }
+  
 }

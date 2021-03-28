@@ -100,7 +100,6 @@ function draw() {
 }
 
 function mousePressed(){
-  console.log('click');
   
   if (tag == 'home'){
     homeSelect(); 
@@ -119,7 +118,6 @@ function mousePressed(){
   }
   if (tag == 'threeW'){
     threeWSelect(sens3Summary);
-    console.log(sens3Summary);
   }
 }
 
@@ -154,11 +152,22 @@ function mouseReleased(){
 }
 
 function mouseDragged(){
-    console.log('mouse dragged');
     if (grid[0][6] == 'Potentiometer' && grid[1][6] == 0){
       getMouseAngle();
       sens3Summary = [grid[0][6], grid[1][6], grid[1][5]];
     }
+  
+  if (grid[0][6] == 'Line Tracker' && grid[1][6] == 0){
+    let updateX = mouseX;
+    if (mouseX < 150){
+      updateX = 150;
+    }
+    if (mouseX > 330){
+      updateX = 330;
+    }
+    grid[1][5] = updateX;
+    sens3Summary = [grid[0][6], grid[1][6], grid[1][5]];
+  }
     // return false
 }
 
