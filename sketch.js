@@ -15,6 +15,7 @@ function preload(){
   potent = loadImage('gridIcons/potentiometer.png');
   linetr = loadImage('gridIcons/lineTracker.png');
   smartPt = loadImage('gridIcons/smartPort.png');
+  lightSen = loadImage('gridIcons/lightSensor.png');
 }
 // 2x4 grid background and tag pass[0][4]
   let grid = [];
@@ -157,7 +158,7 @@ function mouseDragged(){
       sens3Summary = [grid[0][6], grid[1][6], grid[1][5]];
     }
   
-  if (grid[0][6] == 'Line Tracker' && grid[1][6] == 0){
+  if (grid[0][6] == 'Light Sensor' && grid[1][6] == 0){
     let updateX = mouseX;
     if (mouseX < 150){
       updateX = 150;

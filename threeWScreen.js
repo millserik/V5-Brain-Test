@@ -11,9 +11,9 @@ function threeWScreen(){
   
   
 //information for available sensors
-    let sensorIcon = [threeWire, bumper, potent,linetr]; //options to cycle through
-    let sensorLabel = ['No Sensor', 'Bumper Switch','Potentiometer','Line Tracker'];
-    let sensorType = [' ', 'Digital Input','Analog Input','Analog Input'];
+    let sensorIcon = [threeWire, bumper, potent,lightSen,linetr]; //options to cycle through
+    let sensorLabel = ['No Sensor', 'Bumper Switch','Potentiometer','Light Sensor','Line Tracker'];
+    let sensorType = [' ', 'Digital Input','Analog Input','Analog Input','Analog Input'];
     tapTrack3 = grid[1][4]; //counter to track how many times icon is clicked
   let digital = ['Low (0)','High (1)'];
   let buttonState = ['Pressed','Unpressed']
@@ -52,6 +52,17 @@ function threeWScreen(){
   text(sensorType[(tapTrack3 % sensorLabel.length)],180,55);
   
   //add display elements specific to sensor
+  if (sens == 'No Sensor'){
+    text('Click the icon to change sensors.',122,115);
+    
+    rectMode(CORNER);
+    noFill();
+    strokeWeight(1);
+    stroke(255,50);
+    rect(120,92,240,180);
+    noStroke();
+    
+  }
  
   if (sens == 'Bumper Switch'){
     text(digital[sens3Summary[1]],240,78); 
@@ -133,14 +144,14 @@ function threeWScreen(){
     
   }
   
-  if (sens == 'Line Tracker'){
+  if (sens == 'Light Sensor'){
     
     let currentX = sens3Summary[2];
     text('Brightness:',140,115);
     text(floor(map(currentX,150,330,100,0)) + '%',225,115);
-    let analogLT = floor(map(currentX,150,330,0,4095));
-    let analogPercentLT = floor(map(currentX,150,330,0,100));
-        text(analogLT + '  (' + analogPercentLT +'%)',240,78);
+    let analogLS = floor(map(currentX,150,330,0,4095));
+    let analogPercentLS = floor(map(currentX,150,330,0,100));
+        text(analogLS + '  (' + analogPercentLS +'%)',240,78);
     
       //box around slider
     rectMode(CORNER);
@@ -185,10 +196,16 @@ function threeWScreen(){
     pop();
     //0,176,240
     
-    
-    
   }
   
+  if (sens == 'Line Tracker'){
+    rectMode(CORNER);
+    noFill();
+    strokeWeight(1);
+    stroke(255,50);
+    rect(120,92,240,180);
+    noStroke();
+  }
   sens3Summary[0] = sens;
   
   return sens3Summary;
